@@ -35,7 +35,9 @@
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
         <script src="js/leaflet.photon.js"></script>
-        <script src="data/Centroides_1.js"></script>
+        <script src="data/lineas_limite10SHP_REGCAN95recintos_municipales_inspire_canarias_regcan95recintos_municipales_inspire_canarias_regcan95shp_1.js"></script>
+        <script src="data/Centroides_2.js"></script>
+        <script src="data/Centroides_3.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -44,7 +46,7 @@
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[38.21355316818683,-7.013837206777443],[41.897986154058025,1.1984092156501054]]);
+        }).fitBounds([[27.038999490838904,-16.579452674976043],[43.79703221961636,23.043308642552113]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -138,7 +140,89 @@
         });
         layer_ESRIGraylight_0;
         map.addLayer(layer_ESRIGraylight_0);
-        function pop_Centroides_1(feature, layer) {
+        function pop_lineas_limite10SHP_REGCAN95recintos_municipales_inspire_canarias_regcan95recintos_municipales_inspire_canarias_regcan95shp_1(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['INSPIREID'] !== null ? autolinker.link(String(feature.properties['INSPIREID']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COUNTRY'] !== null ? autolinker.link(String(feature.properties['COUNTRY']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NATLEV</th>\
+                        <td>' + (feature.properties['NATLEV'] !== null ? autolinker.link(String(feature.properties['NATLEV']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">NATLEVNAME</th>\
+                        <td>' + (feature.properties['NATLEVNAME'] !== null ? autolinker.link(String(feature.properties['NATLEVNAME']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NATCODE'] !== null ? autolinker.link(String(feature.properties['NATCODE']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NAMEUNIT'] !== null ? autolinker.link(String(feature.properties['NAMEUNIT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CODNUT1'] !== null ? autolinker.link(String(feature.properties['CODNUT1']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CODNUT2'] !== null ? autolinker.link(String(feature.properties['CODNUT2']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CODNUT3'] !== null ? autolinker.link(String(feature.properties['CODNUT3']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">suscriptores-eom_suscriptores</th>\
+                        <td>' + (feature.properties['suscriptores-eom_suscriptores'] !== null ? autolinker.link(String(feature.properties['suscriptores-eom_suscriptores']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_lineas_limite10SHP_REGCAN95recintos_municipales_inspire_canarias_regcan95recintos_municipales_inspire_canarias_regcan95shp_1_0() {
+            return {
+                pane: 'pane_lineas_limite10SHP_REGCAN95recintos_municipales_inspire_canarias_regcan95recintos_municipales_inspire_canarias_regcan95shp_1',
+                opacity: 1,
+                color: 'rgba(119,119,119,0.8)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1, 
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_lineas_limite10SHP_REGCAN95recintos_municipales_inspire_canarias_regcan95recintos_municipales_inspire_canarias_regcan95shp_1');
+        map.getPane('pane_lineas_limite10SHP_REGCAN95recintos_municipales_inspire_canarias_regcan95recintos_municipales_inspire_canarias_regcan95shp_1').style.zIndex = 401;
+        map.getPane('pane_lineas_limite10SHP_REGCAN95recintos_municipales_inspire_canarias_regcan95recintos_municipales_inspire_canarias_regcan95shp_1').style['mix-blend-mode'] = 'normal';
+        var layer_lineas_limite10SHP_REGCAN95recintos_municipales_inspire_canarias_regcan95recintos_municipales_inspire_canarias_regcan95shp_1 = new L.geoJson(json_lineas_limite10SHP_REGCAN95recintos_municipales_inspire_canarias_regcan95recintos_municipales_inspire_canarias_regcan95shp_1, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_lineas_limite10SHP_REGCAN95recintos_municipales_inspire_canarias_regcan95recintos_municipales_inspire_canarias_regcan95shp_1',
+            layerName: 'layer_lineas_limite10SHP_REGCAN95recintos_municipales_inspire_canarias_regcan95recintos_municipales_inspire_canarias_regcan95shp_1',
+            pane: 'pane_lineas_limite10SHP_REGCAN95recintos_municipales_inspire_canarias_regcan95recintos_municipales_inspire_canarias_regcan95shp_1',
+            onEachFeature: pop_lineas_limite10SHP_REGCAN95recintos_municipales_inspire_canarias_regcan95recintos_municipales_inspire_canarias_regcan95shp_1,
+            style: style_lineas_limite10SHP_REGCAN95recintos_municipales_inspire_canarias_regcan95recintos_municipales_inspire_canarias_regcan95shp_1_0,
+        });
+        bounds_group.addLayer(layer_lineas_limite10SHP_REGCAN95recintos_municipales_inspire_canarias_regcan95recintos_municipales_inspire_canarias_regcan95shp_1);
+        map.addLayer(layer_lineas_limite10SHP_REGCAN95recintos_municipales_inspire_canarias_regcan95recintos_municipales_inspire_canarias_regcan95shp_1);
+        function pop_Centroides_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -166,10 +250,300 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Centroides_1_0(feature) {
+        function style_Centroides_2_0(feature) {
+            if (feature.properties['web'] >= 1.000000 && feature.properties['web'] <= 1.000000 ) {
+                return {
+                pane: 'pane_Centroides_2',
+                radius: 2.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,0.8)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,204,0,0.8)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['web'] >= 1.000000 && feature.properties['web'] <= 2.000000 ) {
+                return {
+                pane: 'pane_Centroides_2',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,0.8)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,204,0,0.8)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['web'] >= 2.000000 && feature.properties['web'] <= 3.000000 ) {
+                return {
+                pane: 'pane_Centroides_2',
+                radius: 6.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,0.8)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,204,0,0.8)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['web'] >= 3.000000 && feature.properties['web'] <= 4.000000 ) {
+                return {
+                pane: 'pane_Centroides_2',
+                radius: 8.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,0.8)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,204,0,0.8)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['web'] >= 4.000000 && feature.properties['web'] <= 5.000000 ) {
+                return {
+                pane: 'pane_Centroides_2',
+                radius: 10.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,0.8)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,204,0,0.8)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['web'] >= 5.000000 && feature.properties['web'] <= 6.000000 ) {
+                return {
+                pane: 'pane_Centroides_2',
+                radius: 12.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,0.8)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,204,0,0.8)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['web'] >= 6.000000 && feature.properties['web'] <= 7.000000 ) {
+                return {
+                pane: 'pane_Centroides_2',
+                radius: 14.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,0.8)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,204,0,0.8)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['web'] >= 7.000000 && feature.properties['web'] <= 8.000000 ) {
+                return {
+                pane: 'pane_Centroides_2',
+                radius: 16.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,0.8)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,204,0,0.8)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['web'] >= 8.000000 && feature.properties['web'] <= 9.000000 ) {
+                return {
+                pane: 'pane_Centroides_2',
+                radius: 18.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,0.8)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,204,0,0.8)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['web'] >= 9.000000 && feature.properties['web'] <= 10.000000 ) {
+                return {
+                pane: 'pane_Centroides_2',
+                radius: 20.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,0.8)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,204,0,0.8)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['web'] >= 10.000000 && feature.properties['web'] <= 11.000000 ) {
+                return {
+                pane: 'pane_Centroides_2',
+                radius: 22.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,0.8)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,204,0,0.8)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['web'] >= 11.000000 && feature.properties['web'] <= 12.000000 ) {
+                return {
+                pane: 'pane_Centroides_2',
+                radius: 24.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,0.8)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,204,0,0.8)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['web'] >= 12.000000 && feature.properties['web'] <= 13.000000 ) {
+                return {
+                pane: 'pane_Centroides_2',
+                radius: 26.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,0.8)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,204,0,0.8)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['web'] >= 13.000000 && feature.properties['web'] <= 14.000000 ) {
+                return {
+                pane: 'pane_Centroides_2',
+                radius: 28.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,0.8)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,204,0,0.8)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['web'] >= 14.000000 && feature.properties['web'] <= 15.000000 ) {
+                return {
+                pane: 'pane_Centroides_2',
+                radius: 30.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,0.8)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,204,0,0.8)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_Centroides_2');
+        map.getPane('pane_Centroides_2').style.zIndex = 402;
+        map.getPane('pane_Centroides_2').style['mix-blend-mode'] = 'normal';
+        var layer_Centroides_2 = new L.geoJson(json_Centroides_2, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Centroides_2',
+            layerName: 'layer_Centroides_2',
+            pane: 'pane_Centroides_2',
+            onEachFeature: pop_Centroides_2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Centroides_2_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Centroides_2);
+        map.addLayer(layer_Centroides_2);
+        function pop_Centroides_3(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    if (typeof layer.closePopup == 'function') {
+                        layer.closePopup();
+                    } else {
+                        layer.eachLayer(function(feature){
+                            feature.closePopup()
+                        });
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NAMEUNIT'] !== null ? autolinker.link(String(feature.properties['NAMEUNIT']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['suscriptores-eom_suscriptores'] !== null ? autolinker.link(String(feature.properties['suscriptores-eom_suscriptores']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_Centroides_3_0(feature) {
             if (feature.properties['size_web'] >= 1.000000 && feature.properties['size_web'] <= 1.000000 ) {
                 return {
-                pane: 'pane_Centroides_1',
+                pane: 'pane_Centroides_3',
                 radius: 2.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,0.8)',
@@ -185,7 +559,7 @@
             }
             if (feature.properties['size_web'] >= 1.000000 && feature.properties['size_web'] <= 2.000000 ) {
                 return {
-                pane: 'pane_Centroides_1',
+                pane: 'pane_Centroides_3',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,0.8)',
@@ -201,7 +575,7 @@
             }
             if (feature.properties['size_web'] >= 2.000000 && feature.properties['size_web'] <= 3.000000 ) {
                 return {
-                pane: 'pane_Centroides_1',
+                pane: 'pane_Centroides_3',
                 radius: 6.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,0.8)',
@@ -217,7 +591,7 @@
             }
             if (feature.properties['size_web'] >= 3.000000 && feature.properties['size_web'] <= 4.000000 ) {
                 return {
-                pane: 'pane_Centroides_1',
+                pane: 'pane_Centroides_3',
                 radius: 8.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,0.8)',
@@ -233,7 +607,7 @@
             }
             if (feature.properties['size_web'] >= 4.000000 && feature.properties['size_web'] <= 5.000000 ) {
                 return {
-                pane: 'pane_Centroides_1',
+                pane: 'pane_Centroides_3',
                 radius: 10.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,0.8)',
@@ -249,7 +623,7 @@
             }
             if (feature.properties['size_web'] >= 5.000000 && feature.properties['size_web'] <= 6.000000 ) {
                 return {
-                pane: 'pane_Centroides_1',
+                pane: 'pane_Centroides_3',
                 radius: 12.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,0.8)',
@@ -265,7 +639,7 @@
             }
             if (feature.properties['size_web'] >= 6.000000 && feature.properties['size_web'] <= 7.000000 ) {
                 return {
-                pane: 'pane_Centroides_1',
+                pane: 'pane_Centroides_3',
                 radius: 14.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,0.8)',
@@ -281,7 +655,7 @@
             }
             if (feature.properties['size_web'] >= 7.000000 && feature.properties['size_web'] <= 8.000000 ) {
                 return {
-                pane: 'pane_Centroides_1',
+                pane: 'pane_Centroides_3',
                 radius: 16.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,0.8)',
@@ -297,7 +671,7 @@
             }
             if (feature.properties['size_web'] >= 8.000000 && feature.properties['size_web'] <= 9.000000 ) {
                 return {
-                pane: 'pane_Centroides_1',
+                pane: 'pane_Centroides_3',
                 radius: 18.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,0.8)',
@@ -313,7 +687,7 @@
             }
             if (feature.properties['size_web'] >= 9.000000 && feature.properties['size_web'] <= 10.000000 ) {
                 return {
-                pane: 'pane_Centroides_1',
+                pane: 'pane_Centroides_3',
                 radius: 20.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,0.8)',
@@ -329,7 +703,7 @@
             }
             if (feature.properties['size_web'] >= 10.000000 && feature.properties['size_web'] <= 11.000000 ) {
                 return {
-                pane: 'pane_Centroides_1',
+                pane: 'pane_Centroides_3',
                 radius: 22.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,0.8)',
@@ -345,7 +719,7 @@
             }
             if (feature.properties['size_web'] >= 11.000000 && feature.properties['size_web'] <= 12.000000 ) {
                 return {
-                pane: 'pane_Centroides_1',
+                pane: 'pane_Centroides_3',
                 radius: 24.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,0.8)',
@@ -361,7 +735,7 @@
             }
             if (feature.properties['size_web'] >= 12.000000 && feature.properties['size_web'] <= 13.000000 ) {
                 return {
-                pane: 'pane_Centroides_1',
+                pane: 'pane_Centroides_3',
                 radius: 26.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,0.8)',
@@ -377,7 +751,7 @@
             }
             if (feature.properties['size_web'] >= 13.000000 && feature.properties['size_web'] <= 14.000000 ) {
                 return {
-                pane: 'pane_Centroides_1',
+                pane: 'pane_Centroides_3',
                 radius: 28.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,0.8)',
@@ -393,7 +767,7 @@
             }
             if (feature.properties['size_web'] >= 14.000000 && feature.properties['size_web'] <= 15.000000 ) {
                 return {
-                pane: 'pane_Centroides_1',
+                pane: 'pane_Centroides_3',
                 radius: 30.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,0.8)',
@@ -408,26 +782,26 @@
             }
             }
         }
-        map.createPane('pane_Centroides_1');
-        map.getPane('pane_Centroides_1').style.zIndex = 401;
-        map.getPane('pane_Centroides_1').style['mix-blend-mode'] = 'normal';
-        var layer_Centroides_1 = new L.geoJson(json_Centroides_1, {
+        map.createPane('pane_Centroides_3');
+        map.getPane('pane_Centroides_3').style.zIndex = 403;
+        map.getPane('pane_Centroides_3').style['mix-blend-mode'] = 'normal';
+        var layer_Centroides_3 = new L.geoJson(json_Centroides_3, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Centroides_1',
-            layerName: 'layer_Centroides_1',
-            pane: 'pane_Centroides_1',
-            onEachFeature: pop_Centroides_1,
+            dataVar: 'json_Centroides_3',
+            layerName: 'layer_Centroides_3',
+            pane: 'pane_Centroides_3',
+            onEachFeature: pop_Centroides_3,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_Centroides_1_0(feature));
+                return L.circleMarker(latlng, style_Centroides_3_0(feature));
             },
         });
-        bounds_group.addLayer(layer_Centroides_1);
-        map.addLayer(layer_Centroides_1);
+        bounds_group.addLayer(layer_Centroides_3);
+        map.addLayer(layer_Centroides_3);
         setBounds();
         </script>        
     </body>
